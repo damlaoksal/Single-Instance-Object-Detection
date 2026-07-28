@@ -324,9 +324,6 @@ Possible future improvements include:
 
 ---
 
-# Notes
-
-This implementation represents a prototype developed for a technical case study.
 
 # Notes
 
