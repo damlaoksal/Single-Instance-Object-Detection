@@ -255,13 +255,14 @@ models_onnx/
 ```
 ## Model Conversion 
 The repository also contains **convert_models.py**, which can be used to export the original PyTorch models to ONNX format if necessary.
+To keep this repository lightweight, the OSTrack repository and its configuration files (.yaml) are not bundled in this repository.
+If you need to re-export ostrack_256.onnx using convert_models.py, please clone the official OSTrack repository to access the required config/yaml files:
+Clone OSTrack repository for configuration files and model definitions
+git clone [https://github.com/botaoye/OSTrack.git](https://github.com/botaoye/OSTrack.git)
 
 > **Note:** The original PyTorch weights are provided for reproducibility and model conversion purposes. The application itself performs inference using the exported ONNX models.
 
-To keep this repository lightweight, the OSTrack repository and its configuration files (.yaml) are not bundled in this repository.
-If you need to re-export ostrack_256.onnx using convert_models.py, please clone the official OSTrack repository to access the required config/yaml files:
-# Clone OSTrack repository for configuration files and model definitions
-git clone [https://github.com/botaoye/OSTrack.git](https://github.com/botaoye/OSTrack.git)
+
 ---
 
 # Build
