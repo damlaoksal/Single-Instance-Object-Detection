@@ -1,0 +1,11 @@
+yolo_env/
+demo_results/
+build/
+OSTrack/
+videos/
+
+
+models/*
+models_onnx/*
+!models/.gitkeep
+!models_onnx/.gitkeep
