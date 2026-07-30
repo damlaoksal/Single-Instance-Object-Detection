@@ -162,6 +162,15 @@ This approach avoids automatically switching to another object after temporary t
 
 ---
 
+
+## 6. Manual Reset
+
+At any time during execution, the operator can press **R** to reset the current tracking session.
+
+This clears the currently selected target, stops the active tracker, and returns the system to the initial detection stage, allowing a new target instance to be selected from the scene.
+
+---
+
 # Project Structure
 
 ```text
