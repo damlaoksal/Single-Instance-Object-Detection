@@ -143,6 +143,17 @@ std::vector<Detection> YOLODetector::detect(const cv::Mat& frame)
                 int width = static_cast<int>(w * scaleX);
                 int height = static_cast<int>(h * scaleY);
 
+                float boxArea = static_cast<float>(width * height);
+                float frameArea = static_cast<float>(frame.cols * frame.rows);
+
+                // Eliminate boxes that are too large 
+                if (boxArea > frameArea * 0.5f ||
+                    width > frame.cols * 0.8f ||
+                    height > frame.rows * 0.8f)
+                {
+                    continue;
+                }
+
                 boxes.push_back(cv::Rect(left, top, width, height));
                 confidences.push_back(maxScore);
                 classIds.push_back(isPerson ? 0 : 2);
