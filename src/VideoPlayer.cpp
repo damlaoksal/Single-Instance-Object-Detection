@@ -194,7 +194,6 @@ void VideoPlayer::processFrame(cv::Mat& frame)
             Detection bestDet;
             bool foundMatch = false;
 
-            // ÖNEMLİ OPTİMİZASYON: OSNet feature'ı döngünün DIŞINDA sadece bir kez çıkarılır!
             cv::Mat templateEmbedding = ImageUtils::extractOsnetFeature(m_osnetNet, m_targetTemplateImage);
             float templateAspect = static_cast<float>(m_targetTemplateImage.cols) / m_targetTemplateImage.rows;
 
@@ -206,7 +205,7 @@ void VideoPlayer::processFrame(cv::Mat& frame)
 
                 float dummyScore = 0.0f;
                 float totalScore = 0.0f;
-                bool isDetVehicle = (det.classId != 0); // 0 = Person, diğerleri = Vehicle
+                bool isDetVehicle = (det.classId != 0); // 0 = Person,others = Vehicle
 
                 if (isDetVehicle) {
                     totalScore = VehicleMatcher::computeScore(m_targetTemplateImage, roi, static_cast<float>(det.box.width) / det.box.height, templateAspect, det.confidence, dummyScore);
@@ -221,7 +220,6 @@ void VideoPlayer::processFrame(cv::Mat& frame)
                 }
             }
 
-            // Seçilen en iyi eşleşmenin sınıfına göre eşik belirleme
             bool bestIsVehicle = (bestDet.classId != 0);
             float matchThreshold = bestIsVehicle ? 0.15f : 0.40f;
 
